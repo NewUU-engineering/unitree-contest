@@ -25,6 +25,8 @@ New Uzbekistan University.
 
 ```
 agrokit/                  # Python-фреймворк Starter Kit
+training/                 # обучение agro_yolo и экспорт политики Go2
+models/                   # веса (локально, не в git)
 examples/                 # рабочие примеры Go2 и G1
 scenes/                   # YAML-сцены для судейства
 docker/                   # Dockerfile и скрипты запуска

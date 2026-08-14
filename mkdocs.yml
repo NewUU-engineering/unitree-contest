@@ -72,12 +72,15 @@ nav:
           - tracks/index.md
           - Трек 1 — Unitree Go2: tracks/go2.md
           - Трек 2 — Unitree G1: tracks/g1.md
+      - Регистрация: registration.md
       - Регламент: rules.md
       - Оценка решений: scoring.md
   - Технологии:
       - Стек: stack.md
       - Starter Kit: starter-kit.md
       - Быстрый старт: quickstart.md
+      - Обучающие материалы: learn.md
+      - Обучение моделей: training-models.md
   - FAQ: faq.md
 
 markdown_extensions:
