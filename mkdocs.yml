@@ -127,6 +127,7 @@ plugins:
           default: true
           name: Русский
           build: true
+          link: /
           site_name: AgroTech Robotics Challenge
           site_description: >-
             Республиканское соревнование по робототехнике и искусственному
@@ -137,6 +138,7 @@ plugins:
         - locale: en
           name: English
           build: true
+          link: /en/
           site_name: AgroTech Robotics Challenge
           site_description: >-
             National robotics and AI competition on Unitree Go2 and G1

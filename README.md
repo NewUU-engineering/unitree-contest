@@ -49,7 +49,7 @@ docker run --rm -it -p 6080:6080 \
     ghcr.io/newuu-engineering/agrokit:latest
 ```
 
-Подробнее — [docs/quickstart.md](docs/quickstart.md) и на сайте
+Подробнее — [docs/ru/quickstart.md](docs/ru/quickstart.md) и на сайте
 [Быстрый старт](https://newuu-engineering.github.io/unitree-contest/quickstart/).
 
 ## Локальная разработка AgroKit (без DDS)
