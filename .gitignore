@@ -1,0 +1,13 @@
+# Сборка сайта документации
+site/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# ОС и редакторы
+.DS_Store
+.idea/
+.vscode/

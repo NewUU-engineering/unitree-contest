@@ -1,0 +1,178 @@
+/* ── Фирменная палитра: агро-зелёный с техническим акцентом ─────────── */
+
+:root {
+  --arc-green:      #2e7d4f;
+  --arc-green-dark: #1f5c39;
+  --arc-lime:       #57b947;
+  --arc-lime-soft:  #7ed957;
+}
+
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color:         var(--arc-green);
+  --md-primary-fg-color--light:  #3f9764;
+  --md-primary-fg-color--dark:   var(--arc-green-dark);
+  --md-primary-bg-color:         #ffffff;
+  --md-primary-bg-color--light:  rgba(255, 255, 255, 0.7);
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color:          var(--arc-lime);
+  --md-accent-fg-color--transparent: rgba(87, 185, 71, 0.1);
+  --md-accent-bg-color:          #ffffff;
+  --md-accent-bg-color--light:   rgba(255, 255, 255, 0.7);
+}
+
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
+  --md-primary-fg-color: #17251d;
+  --md-typeset-a-color:  var(--arc-lime-soft);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 200;
+}
+
+[data-md-color-scheme="slate"][data-md-color-accent="custom"] {
+  --md-accent-fg-color: var(--arc-lime-soft);
+}
+
+/* ── Главная страница ───────────────────────────────────────────────── */
+
+.md-typeset .lead {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Заголовок первого уровня на главной — крупнее и с акцентом */
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--md-default-fg-color);
+}
+
+/* ── Карточки сетки ─────────────────────────────────────────────────── */
+
+.md-typeset .grid.cards > ul > li {
+  border-radius: 0.5rem;
+  border-color: var(--md-default-fg-color--lightest);
+  transition: border-color 180ms, box-shadow 180ms, transform 180ms;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  margin: 0.6rem 0;
+}
+
+/* Иконки в карточках — фирменного цвета */
+.md-typeset .grid.cards .twemoji.lg svg,
+.md-typeset .grid.cards svg {
+  fill: var(--arc-green);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid.cards svg {
+  fill: var(--arc-lime-soft);
+}
+
+/* ── Таблицы ────────────────────────────────────────────────────────── */
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+  font-weight: 600;
+}
+
+/* ── Кнопки ─────────────────────────────────────────────────────────── */
+
+.md-typeset .md-button {
+  border-radius: 0.4rem;
+  font-weight: 600;
+}
+
+.md-typeset .md-button--primary {
+  background-color: var(--arc-green);
+  border-color: var(--arc-green);
+}
+
+.md-typeset .md-button--primary:hover {
+  background-color: var(--arc-lime);
+  border-color: var(--arc-lime);
+  color: #fff;
+}
+
+/* ── Схема стека ────────────────────────────────────────────────────── */
+
+.md-typeset .stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin: 1.6em 0;
+}
+
+.md-typeset .stack__layer,
+.md-typeset .stack__target {
+  position: relative;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 3px solid var(--arc-green);
+  border-radius: 0.35rem;
+  background-color: var(--md-code-bg-color);
+}
+
+/* Стрелки между слоями */
+.md-typeset .stack__layer:not(:last-child)::after,
+.md-typeset .stack > .stack__layer--bus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1.05rem;
+  width: 1px;
+  height: 0.75rem;
+  background-color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .stack__layer--bus {
+  border-left-color: var(--arc-lime);
+  border-style: solid;
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+.md-typeset .stack__targets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+}
+
+.md-typeset .stack__target {
+  border-left-color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .stack__title {
+  margin: 0 0 0.15rem;
+  font-size: 0.78rem;
+}
+
+.md-typeset .stack p {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .stack p.stack__title {
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color);
+}
+
+/* ── Мелочи ─────────────────────────────────────────────────────────── */
+
+.md-typeset code {
+  font-size: 0.85em;
+}
+
+.md-header__topic:first-child {
+  font-weight: 700;
+}

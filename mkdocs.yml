@@ -1,0 +1,121 @@
+site_name: AgroTech Robotics Challenge
+site_description: >-
+  Республиканское соревнование по робототехнике и искусственному интеллекту
+  на платформах Unitree Go2 и Unitree G1. New Uzbekistan University.
+site_author: NewUU Engineering
+site_url: https://newuu-engineering.github.io/unitree-contest/
+
+repo_url: https://github.com/NewUU-engineering/unitree-contest
+repo_name: NewUU-engineering/unitree-contest
+edit_uri: edit/main/docs/
+
+copyright: New Uzbekistan University · Инженерная школа
+
+theme:
+  name: material
+  language: ru
+  favicon: assets/favicon.svg
+  logo: assets/logo.svg
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Тёмная тема
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Светлая тема
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/NewUU-engineering
+      name: NewUU Engineering на GitHub
+    - icon: fontawesome/solid/envelope
+      link: mailto:robotics@newuu.uz
+      name: Написать организаторам
+
+nav:
+  - Главная: index.md
+  - Соревнование:
+      - Этапы: stages.md
+      - Треки:
+          - tracks/index.md
+          - Трек 1 — Unitree Go2: tracks/go2.md
+          - Трек 2 — Unitree G1: tracks/g1.md
+      - Оценка решений: scoring.md
+  - Технологии:
+      - Стек: stack.md
+      - Starter Kit: starter-kit.md
+      - Быстрый старт: quickstart.md
+  - FAQ: faq.md
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Ссылка на раздел
+      # Кириллические заголовки должны давать читаемые якоря, а не пустые
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search:
+      lang:
+        - ru
+        - en

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <!-- :>;>A -->
+  <path d="M24 42V18" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M24 20c-5 0-8-2.6-8-6.6 4.4 0 8 2.6 8 6.6ZM24 20c5 0 8-2.6 8-6.6-4.4 0-8 2.6-8 6.6Z" fill="#fff"/>
+  <path d="M24 28c-5 0-8-2.6-8-6.6 4.4 0 8 2.6 8 6.6ZM24 28c5 0 8-2.6 8-6.6-4.4 0-8 2.6-8 6.6Z" fill="#fff" opacity=".82"/>
+  <path d="M24 14c-2.6-2-3.4-4.6-2-7.4 2.6 1.4 3.6 4.2 2 7.4ZM24 14c2.6-2 3.4-4.6 2-7.4-2.6 1.4-3.6 4.2-2 7.4Z" fill="#fff"/>
+  <!-- >?>@K @>1>B0 -->
+  <path d="M12 42v-6.4c0-1.4 1-2.6 2.4-2.6H20M36 42v-6.4c0-1.4-1-2.6-2.4-2.6H28" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".7"/>
+</svg>
