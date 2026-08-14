@@ -18,6 +18,8 @@ NEWUU. Соревнование проводит инженерная школа
 [Обучающие материалы](learn.md){ .md-button }
 [Регистрация](registration.md){ .md-button }
 
+[English version :material-translate:](/en/){ .md-button }
+
 ---
 
 ## Что вас ждёт

@@ -40,8 +40,6 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.top
-    - navigation.instant
-    - navigation.instant.progress
     - navigation.tracking
     - navigation.indexes
     - toc.follow
@@ -94,7 +92,6 @@ markdown_extensions:
   - toc:
       permalink: true
       permalink_title: Ссылка на раздел
-      # Кириллические заголовки должны давать читаемые якоря, а не пустые
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
   - pymdownx.betterem
   - pymdownx.caret
@@ -107,7 +104,6 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
@@ -123,3 +119,52 @@ plugins:
       lang:
         - ru
         - en
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      languages:
+        - locale: ru
+          default: true
+          name: Русский
+          build: true
+          site_name: AgroTech Robotics Challenge
+          site_description: >-
+            Республиканское соревнование по робототехнике и искусственному
+            интеллекту на платформах Unitree Go2 и Unitree G1.
+          theme:
+            language: ru
+          copyright: New Uzbekistan University · Инженерная школа
+        - locale: en
+          name: English
+          build: true
+          site_name: AgroTech Robotics Challenge
+          site_description: >-
+            National robotics and AI competition on Unitree Go2 and G1
+            platforms. New Uzbekistan University.
+          theme:
+            language: en
+            palette:
+              - media: "(prefers-color-scheme: light)"
+                toggle:
+                  name: Switch to dark mode
+              - media: "(prefers-color-scheme: dark)"
+                toggle:
+                  name: Switch to light mode
+          copyright: New Uzbekistan University · Engineering School
+          nav_translations:
+            Главная: Home
+            Соревнование: Competition
+            Этапы: Stages
+            Треки: Tracks
+            Трек 1 — Unitree Go2: Track 1 — Unitree Go2
+            Трек 2 — Unitree G1: Track 2 — Unitree G1
+            Регистрация: Registration
+            Регламент: Rules
+            Оценка решений: Scoring
+            Технологии: Technology
+            Стек: Stack
+            Starter Kit: Starter Kit
+            Быстрый старт: Quick start
+            Обучающие материалы: Learning resources
+            Обучение моделей: Model training
+            FAQ: FAQ
