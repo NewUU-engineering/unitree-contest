@@ -6,4 +6,4 @@
 | `en/` | English | `/en/` |
 | `assets/`, `stylesheets/` | Shared | both locales |
 
-MkDocs config: [`mkdocs.yml`](../mkdocs.yml) · i18n via `mkdocs-static-i18n`.
+MkDocs config: [`mkdocs.yml`](https://github.com/NewUU-engineering/unitree-contest/blob/main/mkdocs.yml) · i18n via `mkdocs-static-i18n`.

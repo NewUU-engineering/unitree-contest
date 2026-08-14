@@ -9,6 +9,10 @@ repo_url: https://github.com/NewUU-engineering/unitree-contest
 repo_name: NewUU-engineering/unitree-contest
 edit_uri: edit/main/docs/
 
+# Contributor note at docs/README.md — not part of the published site
+exclude_docs: |
+  README.md
+
 copyright: New Uzbekistan University · Инженерная школа
 
 theme:
