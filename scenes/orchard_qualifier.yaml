@@ -1,0 +1,14 @@
+name: orchard_qualifier
+rows:
+  - id: row_1
+    waypoints:
+      - [0.0, 0.0]
+      - [8.0, 0.0]
+  - id: row_2
+    waypoints:
+      - [0.0, 1.5]
+      - [8.0, 1.5]
+  - id: row_3
+    waypoints:
+      - [0.0, 3.0]
+      - [8.0, 3.0]

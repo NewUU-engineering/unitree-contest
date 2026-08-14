@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agrokit"
+version = "0.1.0"
+description = "Starter Kit API for AgroTech Robotics Challenge (Unitree Go2 & G1)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "NewUU Engineering" }]
+dependencies = [
+    "numpy>=1.24",
+    "opencv-python-headless>=4.8",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+agrokit-judge = "agrokit.judge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agrokit*"]

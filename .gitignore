@@ -4,8 +4,18 @@ site/
 # Python
 .venv/
 venv/
+.pytest_cache/
 __pycache__/
 *.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Локальные данные участников (монтируются в контейнер)
+solution/*
+!solution/README.md
+field_report.json
+examples/field_report.json
 
 # ОС и редакторы
 .DS_Store
