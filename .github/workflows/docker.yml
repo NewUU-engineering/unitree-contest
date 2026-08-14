@@ -1,0 +1,72 @@
+name: Docker
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "agrokit/**"
+      - "docker/**"
+      - "examples/**"
+      - "scenes/**"
+      - "docker-compose.yml"
+      - ".github/workflows/docker.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: newuu-engineering/agrokit
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,prefix=
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Smoke test (imports + mock run)
+        if: github.event_name != 'pull_request'
+        run: |
+          IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+          docker run --rm \
+            -e AGRO_START_SIM=0 \
+            -e AGRO_START_DESKTOP=0 \
+            -e AGROKIT_MOCK=1 \
+            -e AGRO_SCENES_DIR=/workspace/scenes \
+            "$IMAGE" \
+            python3 -c "
+          from agrokit.go2 import Go2
+          from agrokit.g1 import G1
+          Go2(mock=True).report.export('/tmp/r.json')
+          G1(mock=True)
+          print('smoke ok')
+          "

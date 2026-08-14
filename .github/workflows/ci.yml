@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "agrokit/**"
+      - "examples/**"
+      - "scenes/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "agrokit/**"
+      - "examples/**"
+      - "scenes/**"
+      - ".github/workflows/ci.yml"
+
+jobs:
+  test-agrokit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install AgroKit
+        run: pip install -e "./agrokit[dev]"
+
+      - name: Run tests
+        env:
+          AGROKIT_MOCK: "1"
+          AGRO_SCENES_DIR: ${{ github.workspace }}/scenes
+        run: pytest agrokit/tests -q
+
+  lint-dockerfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Dockerfile syntax
+        run: docker build --check -f docker/Dockerfile .

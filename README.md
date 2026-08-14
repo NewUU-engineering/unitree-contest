@@ -22,22 +22,41 @@ New Uzbekistan University.
 
 ## Репозиторий
 
-Здесь живёт сайт документации соревнования: регламент, описание треков,
-технологический стек и материалы Starter Kit.
+```
+agrokit/                  # Python-фреймворк Starter Kit
+examples/                 # рабочие примеры Go2 и G1
+scenes/                   # YAML-сцены для судейства
+docker/                   # Dockerfile и скрипты запуска
+solution/                 # сюда кладёт решение команда (volume)
+docs/                     # сайт документации (MkDocs)
+```
 
+## Docker — быстрый старт
+
+```bash
+docker compose up --build
 ```
-docs/                     # исходники сайта (Markdown)
-├── index.md              # главная
-├── stages.md             # этапы сезона
-├── tracks/               # описание треков
-├── stack.md              # технологический стек и правила безопасности
-├── starter-kit.md        # API фреймворка AgroKit
-├── quickstart.md         # запуск окружения за 15 минут
-├── scoring.md            # критерии оценки
-└── faq.md                # частые вопросы
-mkdocs.yml                # конфигурация сайта
-requirements-docs.txt     # зависимости сборки
+
+Готовый образ (после push в `main`):
+
+```bash
+docker pull ghcr.io/newuu-engineering/agrokit:latest
+docker run --rm -it -p 6080:6080 \
+    -v "$PWD/solution:/workspace/solution" \
+    ghcr.io/newuu-engineering/agrokit:latest
 ```
+
+Подробнее — [docs/quickstart.md](docs/quickstart.md) и на сайте
+[Быстрый старт](https://newuu-engineering.github.io/unitree-contest/quickstart/).
+
+## Локальная разработка AgroKit (без DDS)
+
+```bash
+cd agrokit && pip install -e .
+AGROKIT_MOCK=1 AGRO_SCENES_DIR=../scenes python ../examples/go2_scout.py
+```
+
+Полный симулятор Unitree доступен только в Docker-образе.
 
 ## Локальная сборка сайта
 

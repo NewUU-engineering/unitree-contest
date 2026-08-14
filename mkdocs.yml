@@ -72,6 +72,7 @@ nav:
           - tracks/index.md
           - Трек 1 — Unitree Go2: tracks/go2.md
           - Трек 2 — Unitree G1: tracks/g1.md
+      - Регламент: rules.md
       - Оценка решений: scoring.md
   - Технологии:
       - Стек: stack.md
