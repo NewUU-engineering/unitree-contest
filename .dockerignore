@@ -1,0 +1,15 @@
+.git
+.venv
+venv
+site/
+__pycache__
+*.pyc
+*.pyo
+.DS_Store
+.idea
+.vscode
+*.egg-info
+dist
+build
+solution/
+models/

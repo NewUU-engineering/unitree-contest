@@ -1,0 +1,17 @@
+services:
+  agrokit:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: ghcr.io/newuu-engineering/agrokit:latest
+    ports:
+      - "6080:6080"
+    volumes:
+      - ./solution:/workspace/solution
+      - ./models:/workspace/models
+    environment:
+      AGRO_ROBOT: go2
+      AGRO_START_SIM: "1"
+      AGRO_START_DESKTOP: "1"
+    stdin_open: true
+    tty: true
