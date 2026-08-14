@@ -17,6 +17,16 @@ solution/*
 field_report.json
 examples/field_report.json
 
+# Обучение моделей
+training/runs/
+training/datasets/agro/images/
+training/datasets/agro/labels/
+models/*.pt
+models/*.onnx
+models/go2_locomotion/
+!models/.gitkeep
+.venv-train/
+
 # ОС и редакторы
 .DS_Store
 .idea/

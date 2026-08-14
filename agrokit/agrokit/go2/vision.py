@@ -9,12 +9,19 @@ import numpy as np
 from agrokit.types import Detection
 
 
-# Demo detections (table/workspace coordinates valid for G1 arm and Go2 map demo).
+# Demo detections when no weights are available (mock / CI).
 _DEMO_DETECTIONS = (
     Detection("powdery_mildew", 0.82, 0.45, 0.10, 0.80),
     Detection("ripe_apple", 0.91, 0.40, -0.08, 0.82, grade="A"),
     Detection("leaf_rust", 0.76, 0.38, 0.12, 0.79),
 )
+
+_GRADE_BY_LABEL = {
+    "ripe_apple": "A",
+    "ripe_tomato": "A",
+    "unripe_apple": "C",
+    "defect_fruit": "C",
+}
 
 
 class VisionModule:
@@ -44,10 +51,35 @@ class VisionModule:
         )
         return img
 
-    def detect(self, model: str = "agro_yolo") -> list[Detection]:
-        _ = self._load_model(model)
-        # Until agro_yolo weights ship, return deterministic demo set.
-        return list(_DEMO_DETECTIONS)
+    def detect(self, model: str = "agro_yolo", *, conf: float = 0.35) -> list[Detection]:
+        yolo = self._load_model(model)
+        if yolo is None:
+            return list(_DEMO_DETECTIONS)
+
+        frame = self.frame()
+        results = yolo(frame, verbose=False, conf=conf)
+        detections: list[Detection] = []
+
+        for result in results:
+            names = result.names or {}
+            if result.boxes is None:
+                continue
+            height, width = frame.shape[:2]
+            for box in result.boxes:
+                cls_id = int(box.cls[0])
+                label = names.get(cls_id, str(cls_id))
+                score = float(box.conf[0])
+                x1, y1, x2, y2 = box.xyxy[0].tolist()
+                cx = (x1 + x2) / 2.0 / max(width, 1)
+                cy = (y1 + y2) / 2.0 / max(height, 1)
+                # Approximate workspace mapping until camera calibration ships.
+                x = (cx - 0.5) * 0.8
+                y = (0.5 - cy) * 0.6
+                z = 0.82
+                grade = _GRADE_BY_LABEL.get(label, "B")
+                detections.append(Detection(label, score, x, y, z, grade=grade))
+
+        return detections
 
     def to_map(self, detection: Detection) -> tuple[float, float]:
         return detection.x, detection.y

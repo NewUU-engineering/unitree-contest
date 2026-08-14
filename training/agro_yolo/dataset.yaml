@@ -1,0 +1,16 @@
+# YOLO dataset config for agro_yolo.
+# Copy images/labels into training/datasets/agro/ (see datasets/README.md).
+
+path: ../datasets/agro
+train: images/train
+val: images/val
+test: images/test  # optional; remove if empty
+
+names:
+  0: powdery_mildew
+  1: leaf_rust
+  2: healthy_leaf
+  3: ripe_apple
+  4: unripe_apple
+  5: ripe_tomato
+  6: defect_fruit

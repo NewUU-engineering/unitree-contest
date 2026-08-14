@@ -1,0 +1,4 @@
+# Place trained weights here (not committed by default).
+#
+# agro_yolo.pt          — YOLO detector for go2.vision / g1.vision
+# go2_locomotion/       — locomotion policy bundle (organizers)
