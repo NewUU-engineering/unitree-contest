@@ -1,0 +1,897 @@
+/* =============================================================================
+   NewUU documentation theme
+   Drop-in stylesheet for MkDocs Material:
+
+     extra_css:
+       - stylesheets/newuu.css
+
+   Palette source: newuu.uz production CSS. Contrast ratios in the comments are
+   computed against each scheme's own background — re-verify with your own
+   checker before this becomes an organisational standard.
+   ========================================================================== */
+
+/* ---------- 1. Light scheme ------------------------------------------------ */
+[data-md-color-scheme="newuu"] {
+  --md-primary-fg-color:          #162347; /* chrome: header, footer          */
+  --md-primary-fg-color--light:   #2A407A;
+  --md-primary-fg-color--dark:    #0E1A38;
+  --md-primary-bg-color:          #ffffff;
+  --md-primary-bg-color--light:   rgba(255,255,255,.7);
+  --md-accent-fg-color:           #147E5C; /* 5.0:1 — active nav, hover       */
+  --md-accent-fg-color--transparent: rgba(20,126,92,.1);
+  --md-typeset-a-color:           #145795; /* 7.4:1 — body links              */
+
+  --md-default-fg-color:          #162347;
+  --md-default-fg-color--light:   #475262; /* 7.9:1 — secondary text          */
+  --md-default-fg-color--lighter: #778191; /* meta and borders only           */
+  --md-default-fg-color--lightest:#BECADD;
+  --md-default-bg-color:          #ffffff;
+  --md-default-bg-color--light:   #F8FAFD;
+  --md-default-bg-color--lighter: #EFF3F9;
+  --md-default-bg-color--lightest:#EAEEF5;
+
+  --md-typeset-color:             #242D3A;
+  --md-typeset-mark-color:        rgba(65,176,120,.28);
+  --md-typeset-table-color:       #DFE4ED;
+  --md-typeset-table-color--light:#EAEEF5;
+  --md-typeset-kbd-color:         #F8FAFD;
+  --md-typeset-kbd-accent-color:  #ffffff;
+  --md-typeset-kbd-border-color:  #BECADD;
+
+  --md-code-fg-color:             #242D3A;
+  --md-code-bg-color:             #F8FAFD;
+  --md-code-hl-color:             rgba(20,126,92,.1);
+  --md-code-hl-comment-color:     #778191;
+  --md-code-hl-keyword-color:     #8C4A00;
+  --md-code-hl-string-color:      #0F6349;
+  --md-code-hl-number-color:      #145795;
+  --md-code-hl-constant-color:    #145795;
+  --md-code-hl-function-color:    #2A407A;
+  --md-code-hl-name-color:        #242D3A;
+  --md-code-hl-operator-color:    #475262;
+  --md-code-hl-punctuation-color: #475262;
+  --md-code-hl-variable-color:    #162347;
+  --md-code-hl-special-color:     #8C1D16;
+
+  --md-footer-fg-color:           #ffffff;
+  --md-footer-fg-color--light:    rgba(255,255,255,.7);
+  --md-footer-fg-color--lighter:  rgba(255,255,255,.45);
+  --md-footer-bg-color:           #162347;
+  --md-footer-bg-color--dark:     #0E1A38;
+
+  --md-shadow-z1: 0 1px 2px rgba(1,11,27,.08);
+  --md-shadow-z2: 0 2px 8px rgba(1,11,27,.12);
+  --md-shadow-z3: 0 8px 24px rgba(1,11,27,.22);
+
+  /* semantics the NewUU palette does not ship — introduced by this theme */
+  --nu-danger:      #B3261E;  /* 6.0:1 on white; white text on it passes  */
+  --nu-danger-ink:  #8C1D16;  /* 8.0:1 — danger text on a light ground    */
+  --nu-danger-bg:   #FDECEA;
+  --nu-danger-edge: #E9CFCC;
+  --nu-warning:     #8A5A00;  /* 5.6:1 — amber dark enough to carry text  */
+  --nu-warning-bg:  #FFFBF2;
+  --nu-warning-edge:#E5D2AE;
+  --nu-note:        #0F6349;  /* 6.4:1 — green, reserved for note         */
+  --nu-note-bg:     #F4F8F6;
+  --nu-mark-1:      #147E5C;  /* logo mark, top segment    */
+  --nu-mark-2:      #41B078;  /* logo mark, middle segment */
+  --nu-mark-3:      #2DAB5E;  /* logo mark, bottom segment */
+}
+
+/* ---------- 2. Dark scheme — designed, not inverted ------------------------ */
+[data-md-color-scheme="newuu-dark"] {
+  color-scheme: dark;
+
+  --md-primary-fg-color:          #060C19;
+  --md-primary-fg-color--light:   #16203A;
+  --md-primary-fg-color--dark:    #010B1B;
+  --md-primary-bg-color:          #F2F6FC;
+  --md-primary-bg-color--light:   rgba(242,246,252,.7);
+  --md-accent-fg-color:           #41B078; /* 6.7:1 on #0A1122. The green MUST
+                                              change value here — #147E5C fails */
+  --md-accent-fg-color--transparent: rgba(65,176,120,.12);
+  --md-typeset-a-color:           #8FB8F0;
+
+  --md-default-fg-color:          #F2F6FC;
+  --md-default-fg-color--light:   #C7D1E0;
+  --md-default-fg-color--lighter: #8895AC;
+  --md-default-fg-color--lightest:#3A4763;
+  --md-default-bg-color:          #0A1122;
+  --md-default-bg-color--light:   #0F1729;
+  --md-default-bg-color--lighter: #16203A;
+  --md-default-bg-color--lightest:#1D2947;
+
+  --md-typeset-color:             #C7D1E0;
+  --md-typeset-mark-color:        rgba(65,176,120,.3);
+  --md-typeset-table-color:       rgba(255,255,255,.09);
+  --md-typeset-table-color--light:rgba(255,255,255,.05);
+  --md-typeset-kbd-color:         #16203A;
+  --md-typeset-kbd-accent-color:  #1D2947;
+  --md-typeset-kbd-border-color:  #2E3B58;
+
+  --md-code-fg-color:             #C7D1E0;
+  --md-code-bg-color:             #060C19;
+  --md-code-hl-color:             rgba(65,176,120,.1);
+  --md-code-hl-comment-color:     #6C7A94;
+  --md-code-hl-keyword-color:     #5FD094;
+  --md-code-hl-string-color:      #8FB8F0;
+  --md-code-hl-number-color:      #F0A93B;
+  --md-code-hl-constant-color:    #F0A93B;
+  --md-code-hl-function-color:    #A7C7F5;
+  --md-code-hl-name-color:        #C7D1E0;
+  --md-code-hl-operator-color:    #8895AC;
+  --md-code-hl-punctuation-color: #8895AC;
+  --md-code-hl-variable-color:    #F2F6FC;
+  --md-code-hl-special-color:     #FF9F94;
+
+  --md-footer-bg-color:           #060C19;
+  --md-footer-bg-color--dark:     #010B1B;
+
+  --md-shadow-z1: 0 1px 2px rgba(0,0,0,.4);
+  --md-shadow-z2: 0 2px 8px rgba(0,0,0,.5);
+  --md-shadow-z3: 0 8px 24px rgba(0,0,0,.6);
+
+  --nu-danger:      #FF6B5E;  /* 6.5:1 on #0A1122 */
+  --nu-danger-ink:  #FFD9D5;
+  --nu-danger-bg:   #2A0C09;
+  --nu-danger-edge: #FF6B5E;
+  --nu-warning:     #F0A93B;
+  --nu-warning-bg:  rgba(240,169,59,.09);
+  --nu-warning-edge:rgba(240,169,59,.4);
+  --nu-note:        #5FD094;
+  --nu-note-bg:     rgba(65,176,120,.07);
+}
+
+/* ---------- 3. Typography -------------------------------------------------- */
+:root {
+  --md-text-font: "IBM Plex Sans";
+  --md-code-font: "JetBrains Mono";
+}
+.md-typeset { font-size: .8rem; line-height: 1.65; font-weight: 500; }
+.md-typeset h1 {
+  font-weight: 700; letter-spacing: -.015em; line-height: 1.15;
+  color: var(--md-default-fg-color);
+}
+.md-typeset h2 {
+  font-weight: 600; letter-spacing: -.005em; line-height: 1.25;
+  margin-top: 2rem; padding-bottom: .35rem;
+  border-bottom: 1px solid var(--md-typeset-table-color);
+}
+.md-typeset h3 { font-weight: 600; line-height: 1.3; }
+.md-typeset h4 { font-weight: 600; font-size: .85rem; }
+.md-typeset strong { font-weight: 700; color: var(--md-default-fg-color); }
+.md-typeset p { max-width: 68ch; text-wrap: pretty; }
+
+/* ---------- 4. Chrome: the tri-tone mark ---------------------------------- */
+/* The mark in the NewUU logo IS a vertical rule in three flat greens. Reused
+   as the brand device in the header and the footer. */
+.md-header__button.md-logo img { height: 1.4rem; width: auto; }
+.md-header__title::before {
+  content: ""; display: inline-block; width: 4px; height: 1.2rem;
+  margin-right: .6rem; vertical-align: -.25rem; border-radius: 1px;
+  background: linear-gradient(180deg,
+    var(--nu-mark-1) 0 38%, var(--nu-mark-2) 38% 64%, var(--nu-mark-3) 64%);
+}
+
+/* ---------- 5. Tables — the component that carries the site --------------- */
+.md-typeset table:not([class]) {
+  border: 0; border-radius: 0; box-shadow: none; font-size: .72rem;
+}
+.md-typeset table:not([class]) th {
+  background: transparent;
+  border-bottom: 2px solid var(--md-default-fg-color);
+  font-size: .62rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--md-default-fg-color);
+  padding: .5rem .7rem; white-space: nowrap;
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset table:not([class]) th {
+  border-bottom-color: var(--md-accent-fg-color); color: var(--nu-note);
+}
+.md-typeset table:not([class]) td {
+  border-top: 0; border-bottom: 1px solid var(--md-default-bg-color--lightest);
+  padding: .65rem .7rem; vertical-align: top; line-height: 1.55;
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset table:not([class]) td {
+  border-bottom-color: var(--md-typeset-table-color);
+}
+.md-typeset table:not([class]) tr:hover td {
+  background: var(--md-default-bg-color--light);
+}
+/* mark the emergency row with {: .row-danger } via attr_list */
+.md-typeset table:not([class]) tr.row-danger td { background: var(--nu-danger-bg); }
+[data-md-color-scheme="newuu-dark"] .md-typeset table:not([class]) tr.row-danger td {
+  background: rgba(255,107,94,.07);
+}
+.md-typeset table:not([class]) tr.row-danger td:first-child {
+  box-shadow: inset 3px 0 0 var(--nu-danger);
+  font-weight: 700; color: var(--md-default-fg-color);
+}
+/* mobile: horizontal scroll with the first column pinned */
+@media screen and (max-width: 44.9375em) {
+  .md-typeset table:not([class]) td:first-child,
+  .md-typeset table:not([class]) th:first-child {
+    position: sticky; left: 0; z-index: 1; min-width: 8.5rem;
+    background: var(--md-default-bg-color--light);
+    border-right: 1px solid var(--md-typeset-kbd-border-color);
+  }
+  .md-typeset table:not([class]) tr.row-danger td:first-child {
+    background: var(--nu-danger-bg);
+  }
+}
+
+/* ---------- 6. Admonition ladder: danger > warning > note ----------------- */
+/* Each severity carries a distinct SHAPE as well as a colour, so the ladder
+   survives greyscale and colour blindness. */
+.md-typeset .admonition, .md-typeset details {
+  border-radius: 4px; border: 1px solid var(--md-default-bg-color--lightest);
+  border-left-width: 4px; box-shadow: none; font-size: .74rem;
+  background: var(--md-default-bg-color);
+}
+.md-typeset .admonition-title, .md-typeset summary {
+  font-weight: 600; letter-spacing: 0;
+  background: var(--md-default-bg-color--light);
+}
+.md-typeset .admonition-title::before, .md-typeset summary::before {
+  width: 1.05rem; height: 1.05rem;
+}
+
+/* danger — the one thing to get right */
+.md-typeset .admonition.danger, .md-typeset details.danger {
+  border-color: var(--nu-danger-edge); border-left-color: var(--nu-danger);
+  box-shadow: 0 1px 2px rgba(179,38,30,.1);
+}
+.md-typeset .danger > .admonition-title, .md-typeset details.danger > summary {
+  background: var(--nu-danger-bg); color: var(--nu-danger-ink);
+  font-weight: 700; border-bottom: 1px solid var(--nu-danger-edge);
+}
+.md-typeset .danger > .admonition-title::before,
+.md-typeset details.danger > summary::before { background-color: var(--nu-danger); }
+[data-md-color-scheme="newuu-dark"] .md-typeset .admonition.danger {
+  background: var(--nu-danger-bg);
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset .danger > .admonition-title {
+  background: #8C1D16; color: #ffffff; border-bottom-color: rgba(255,107,94,.4);
+}
+
+/* warning */
+.md-typeset .admonition.warning, .md-typeset details.warning {
+  border-color: var(--nu-warning-edge); border-left-color: var(--nu-warning);
+  background: var(--nu-warning-bg);
+}
+.md-typeset .warning > .admonition-title, .md-typeset details.warning > summary {
+  background: transparent; color: var(--nu-warning); font-weight: 700;
+}
+.md-typeset .warning > .admonition-title::before { background-color: var(--nu-warning); }
+
+/* note — the only content component allowed to use the brand green */
+.md-typeset .admonition.note, .md-typeset details.note {
+  border: 0; border-left: 3px solid var(--md-accent-fg-color);
+  border-radius: 0 4px 4px 0; background: var(--nu-note-bg);
+}
+.md-typeset .note > .admonition-title {
+  background: transparent; color: var(--nu-note); font-weight: 700;
+}
+.md-typeset .note > .admonition-title::before { background-color: var(--nu-note); }
+
+/* ---------- 7. Keyboard keys ---------------------------------------------- */
+/* Requires pymdownx.keys:  ++l2+b++  ->  L2 + B */
+.md-typeset kbd, .md-typeset .keys kbd {
+  display: inline-block; padding: .1rem .35rem .15rem;
+  background: var(--md-typeset-kbd-color);
+  border: 1px solid var(--md-typeset-kbd-border-color);
+  border-bottom-width: 2px; border-radius: 4px; box-shadow: none;
+  font-family: var(--md-code-font), monospace;
+  font-size: .68rem; font-weight: 600; line-height: 1.2;
+  color: var(--md-default-fg-color); white-space: nowrap;
+}
+.md-typeset .keys span { color: var(--md-default-fg-color--lighter); padding: 0 .1rem; }
+/* the emergency combination: ++l2+b++{: .kbd-danger } */
+.md-typeset .kbd-danger kbd, .md-typeset kbd.kbd-danger {
+  background: var(--nu-danger-bg); border-color: #E9A9A2;
+  color: var(--nu-danger-ink); font-weight: 700;
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset .kbd-danger kbd {
+  background: #8C1D16; border-color: var(--nu-danger); color: #FFD9D5;
+}
+
+/* ---------- 8. Code ------------------------------------------------------- */
+.md-typeset pre > code { border-radius: 4px; font-size: .72rem; line-height: 1.75; }
+.md-typeset code { border-radius: 3px; font-size: .74em; }
+.md-typeset :not(pre) > code {
+  border: 1px solid var(--md-default-bg-color--lightest);
+  color: var(--nu-danger-ink); padding: .05rem .3rem;
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset :not(pre) > code {
+  border-color: var(--md-typeset-kbd-border-color); color: #FF9F94;
+}
+.md-typeset .highlight span.filename {
+  background: var(--md-default-bg-color--light);
+  border-bottom: 1px solid var(--md-typeset-table-color);
+  font-family: var(--md-code-font), monospace;
+  font-size: .68rem; font-weight: 500; color: var(--md-default-fg-color--light);
+}
+.md-typeset .tabbed-labels > label { font-size: .7rem; font-weight: 600; }
+
+/* ---------- 9. Step sequence ---------------------------------------------- */
+/* <div class="steps" markdown> around an ordered list */
+.md-typeset .steps > ol { counter-reset: step; list-style: none; margin-left: 0; }
+.md-typeset .steps > ol > li {
+  position: relative; padding-left: 2.4rem; padding-bottom: .9rem; margin: 0;
+}
+.md-typeset .steps > ol > li::before {
+  counter-increment: step; content: counter(step);
+  position: absolute; left: 0; top: .05rem;
+  width: 1.5rem; height: 1.5rem; border-radius: 4px;
+  background: var(--md-primary-fg-color); color: var(--md-primary-bg-color);
+  font-size: .7rem; font-weight: 600; line-height: 1.5rem; text-align: center;
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset .steps > ol > li::before {
+  background: var(--md-accent-fg-color); color: #060C19;
+}
+.md-typeset .steps > ol > li:not(:last-child)::after {
+  content: ""; position: absolute; left: .72rem; top: 1.75rem; bottom: .1rem;
+  width: 1px; background: var(--md-typeset-table-color);
+}
+
+/* ---------- 10. Cards, blockquote, footer -------------------------------- */
+.md-typeset .grid.cards > ul > li {
+  border: 1px solid var(--md-default-bg-color--lightest); border-radius: 12px;
+  box-shadow: var(--md-shadow-z1); padding: 1rem;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color); box-shadow: var(--md-shadow-z2);
+}
+.md-typeset blockquote {
+  border-left: 3px solid var(--md-accent-fg-color);
+  color: var(--md-default-fg-color--light);
+}
+.md-footer-meta { font-size: .68rem; }
+
+/* ---------- 11. Language switcher ---------------------------------------- */
+/* Three languages make this a menu, not a toggle. A language whose page is
+   missing falls back to the default — mark it so the reader knows. */
+.md-select__link { font-size: .72rem; font-weight: 500; }
+.md-select__link .nu-partial {
+  margin-left: .4rem; padding: .05rem .25rem; border-radius: 3px;
+  border: 1px solid var(--nu-warning-edge); color: var(--nu-warning);
+  font-size: .55rem; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* =============================================================================
+   12. TEMPLATE ADDITIONS
+   Added while turning the design hand-off into a working template. Kept in a
+   separate block so the provenance of every rule above stays clear.
+   ========================================================================== */
+
+/* --- 12.1 Make .row-danger authorable from Markdown ------------------------
+   python-markdown's attr_list does NOT support attributes on a table ROW —
+   `{: .row-danger }` after a row is emitted as a literal cell. It DOES work on
+   a table CELL. So the class goes on the row's first cell:
+
+       | **Emergency** {: .row-danger } | ++l2+b++ | Damping mode |
+
+   and `:has()` lifts it to the whole row. The original `tr.row-danger` rules in
+   §5 still apply for rows written as raw HTML.
+   ------------------------------------------------------------------------- */
+.md-typeset table:not([class]) tr:has(td.row-danger) td {
+  background: var(--nu-danger-bg);
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset table:not([class]) tr:has(td.row-danger) td {
+  background: rgba(255,107,94,.07);
+}
+.md-typeset table:not([class]) tr:has(td.row-danger) td:first-child {
+  box-shadow: inset 3px 0 0 var(--nu-danger);
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+}
+@media screen and (max-width: 44.9375em) {
+  .md-typeset table:not([class]) tr:has(td.row-danger) td:first-child {
+    background: var(--nu-danger-bg);
+  }
+}
+
+/* --- 12.2 Card grid icons -------------------------------------------------
+   Material renders :material-*: as an inline SVG that inherits currentColor.
+   Give card icons the accent so the grid reads as one component.            */
+.md-typeset .grid.cards > ul > li > hr + p > .twemoji:first-child,
+.md-typeset .grid.cards > ul > li > p > .twemoji:first-child {
+  color: var(--md-accent-fg-color);
+}
+.md-typeset .grid.cards > ul > li .twemoji svg { height: 1.4rem; width: 1.4rem; }
+
+/* --- 12.3 Header lockup — SUPERSEDED by §12.11 ----------------------------
+   This section used to suppress §4's ::before rule while a `theme.logo` image
+   was present, so the mark did not appear twice. `theme.logo` has since been
+   dropped entirely (the rule must not be a link — see §12.11), so the
+   suppression is gone. Keeping the note because the sibling-combinator detail
+   bites anyone who tries to reintroduce a logo image: Material puts the drawer
+   toggle BETWEEN the logo and the title, so `+` never matches — use `~`.     */
+
+/* --- 12.4 Landing page ----------------------------------------------------
+   A light hero for section index pages. Uses the brand gradient, which the
+   design reserves for the landing page only.                                 */
+.md-typeset .nu-hero {
+  margin: 0 0 2rem;
+  padding: 1.6rem 0 1.8rem;
+  border-bottom: 1px solid var(--md-typeset-table-color);
+}
+.md-typeset .nu-hero h1 {
+  margin: 0 0 .5rem;
+  font-size: 1.9rem;
+}
+.md-typeset .nu-hero .nu-hero__lead {
+  max-width: 56ch;
+  font-size: .88rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .nu-hero__rule {
+  width: 3.4rem; height: 4px; margin-bottom: 1.1rem; border-radius: 2px;
+  background: linear-gradient(90deg, #145795 0%, #118C6C 100%);
+}
+
+/* --- 12.5 Status pills ----------------------------------------------------
+   For page state: draft, needs review, translation pending.
+   Author as:  [Draft]{ .nu-pill .nu-pill--draft }                            */
+.md-typeset .nu-pill {
+  display: inline-block; padding: .1rem .45rem; border-radius: 3px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-size: .6rem; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; vertical-align: .1rem;
+}
+.md-typeset .nu-pill--draft   { border-color: var(--nu-warning-edge); color: var(--nu-warning); }
+.md-typeset .nu-pill--review  { border-color: var(--nu-danger-edge);  color: var(--nu-danger-ink); }
+.md-typeset .nu-pill--stable  { border-color: var(--md-accent-fg-color); color: var(--nu-note); }
+[data-md-color-scheme="newuu-dark"] .md-typeset .nu-pill--review { color: var(--nu-danger); }
+
+/* --- 12.6 Measure must not apply to structural paragraphs -----------------
+   §3 sets `.md-typeset p { max-width: 68ch }` to keep body copy readable. But
+   an admonition title is emitted as `<p class="admonition-title">`, so it
+   inherited the measure and its filled bar stopped two-thirds of the way across
+   the callout. Same for `summary` in a collapsed block and the card grid.      */
+.md-typeset .admonition-title,
+.md-typeset summary,
+.md-typeset .grid.cards p,
+.md-typeset td p,
+.md-typeset .nu-hero__lead {
+  max-width: none;
+}
+
+/* --- 12.7 Variables the custom schemes must define, or dark mode breaks -----
+   A custom scheme name (`newuu` / `newuu-dark`) does NOT inherit Material's
+   `default` or `slate` scheme — only its `:root` fallbacks, which are the LIGHT
+   values. Any Material variable the scheme leaves undefined therefore keeps a
+   light-mode value in dark mode.
+
+   This was not theoretical. `--md-admonition-fg-color` was undefined, so every
+   admonition body rendered in near-black (#000000de) in dark mode:
+
+       danger body text on #2A0C09  =  1.15:1
+
+   Invisible — on the one component whose entire job is to stop somebody being
+   hurt. It passed unnoticed because in light mode black is the correct answer.
+
+   Define them explicitly in BOTH schemes, so neither depends on a fallback.
+   ------------------------------------------------------------------------- */
+[data-md-color-scheme="newuu"] {
+  --md-admonition-fg-color:    #242D3A;
+  --md-admonition-bg-color:    #ffffff;
+  --md-warning-fg-color:       #8A5A00;
+  --md-warning-bg-color:       #FFFBF2;
+  --md-code-hl-generic-color:  #778191;
+  --md-accent-bg-color:        #ffffff;
+  --md-accent-bg-color--light: rgba(255,255,255,.7);
+}
+
+[data-md-color-scheme="newuu-dark"] {
+  --md-admonition-fg-color:    #C7D1E0;  /* 9.6:1 on the danger ground        */
+  --md-admonition-bg-color:    #0A1122;
+  --md-warning-fg-color:       #0A1122;  /* dark ink ON the amber ground      */
+  --md-warning-bg-color:       #F0A93B;
+  --md-code-hl-generic-color:  #8895AC;
+  --md-accent-bg-color:        #060C19;
+  --md-accent-bg-color--light: rgba(6,12,25,.7);
+  --md-footer-fg-color:        #F2F6FC;
+  --md-footer-fg-color--light: rgba(242,246,252,.7);
+  --md-footer-fg-color--lighter: rgba(242,246,252,.45);
+}
+
+/* The danger title bar keeps white ink on the deep red; everything else in the
+   callout body now inherits --md-admonition-fg-color.                        */
+[data-md-color-scheme="newuu-dark"] .md-typeset .admonition.danger,
+[data-md-color-scheme="newuu-dark"] .md-typeset details.danger {
+  color: var(--md-admonition-fg-color);
+}
+
+/* --- 12.8 Header mark and footer lockup -----------------------------------
+   Review feedback: the header mark read as a stray hairline, and the actual
+   university logo appeared nowhere.
+
+   Cause: the mark was scaled down from the official lockup, where the bar is
+   2 units against 80 tall. At a 28px header that is 1.4px wide — measured.
+   assets/newuu-mark.svg is now redrawn at header proportions (6:26), and the
+   full three-line lockup moved to the footer, which is the only place on the
+   page tall enough for it to be legible.                                     */
+.md-header__button.md-logo { padding: 0 .4rem; }
+.md-header__button.md-logo img {
+  height: 1.5rem; width: auto;
+}
+
+.md-copyright .nu-footer-logo {
+  display: block;
+  margin-bottom: .55rem;
+  opacity: .9;
+  transition: opacity .2s;
+}
+.md-copyright .nu-footer-logo:hover { opacity: 1; }
+.md-copyright .nu-footer-logo img {
+  height: 2.6rem; width: auto; display: block;
+}
+@media screen and (max-width: 44.9375em) {
+  .md-copyright .nu-footer-logo img { height: 2.1rem; }
+}
+
+/* --- 12.9 Copy button -----------------------------------------------------
+   Review feedback: it sat on the code block as a light filled tile.
+
+   Cause was not the glyph but its container. Material gives `.md-code__nav` a
+   hardcoded `background: rgba(245,245,245,.3)` — a near-white wash that is
+   invisible on a light code block and composites to a pale grey tile on ours
+   (#060C19 in the dark scheme). Nothing in the theme's variables could reach it.
+
+   The tile is now transparent at rest and picks up a token-derived ground only
+   while the block is hovered, and the glyph is muted until then.
+
+   Material 9.7 renamed this control from `.md-clipboard` to `.md-code__button`.
+   Both are matched so the template survives a version move in either direction.
+   ------------------------------------------------------------------------- */
+.md-typeset .md-code__nav {
+  background: transparent;
+  border-radius: 4px;
+  transition: background-color .2s;
+}
+.md-typeset .highlight:hover .md-code__nav,
+.md-typeset .md-code__nav:focus-within {
+  background: var(--md-default-bg-color--lightest);
+}
+
+.md-typeset .md-code__button,
+.md-typeset .md-clipboard {
+  color: var(--md-default-fg-color--lighter);
+  opacity: .45;
+  transition: opacity .2s, color .2s;
+}
+.md-typeset .highlight:hover .md-code__button,
+.md-typeset .highlight:hover .md-clipboard,
+.md-typeset pre:hover .md-clipboard {
+  opacity: 1;
+}
+.md-typeset .md-code__button:hover,
+.md-typeset .md-code__button:focus-visible,
+.md-typeset .md-clipboard:hover,
+.md-typeset .md-clipboard:focus-visible {
+  color: var(--md-accent-fg-color);
+  opacity: 1;
+}
+
+/* Touch devices have no hover state: keep the control permanently legible. */
+@media (hover: none) {
+  .md-typeset .md-code__button,
+  .md-typeset .md-clipboard { opacity: .75; }
+  .md-typeset .md-code__nav { background: var(--md-default-bg-color--lightest); }
+}
+
+/* --- 12.10 Buttons in the dark scheme -------------------------------------
+   Review feedback: the landing-page buttons all but vanished in dark mode.
+
+   Material builds both button variants out of --md-primary-fg-color, which is
+   the CHROME colour. That works in light (navy fill, white ink, 15.4:1) but
+   collapses in dark, where the chrome is #060C19:
+
+     primary   fill #060C19 on page #0A1122  ->  1.1:1  — a hole, not a button
+     secondary text #060C19 on page #0A1122  ->  1.1:1  — invisible label
+
+   Dark mode cannot reuse the chrome as a fill, because the chrome IS the page.
+   The accent green takes over the primary action instead — consistent with the
+   theme already using green for anything interactive (active nav, hover) and
+   still leaving the danger red untouched.
+   ------------------------------------------------------------------------- */
+[data-md-color-scheme="newuu-dark"] .md-typeset .md-button {
+  color: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color--lighter);   /* 4.6:1 outline */
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset .md-button--primary {
+  background-color: var(--md-accent-fg-color);         /* #41B078          */
+  border-color: var(--md-accent-fg-color);
+  color: #060C19;                                      /* 6.7:1 on the fill */
+}
+[data-md-color-scheme="newuu-dark"] .md-typeset .md-button:focus,
+[data-md-color-scheme="newuu-dark"] .md-typeset .md-button:hover,
+[data-md-color-scheme="newuu-dark"] .md-typeset .md-button--primary:focus,
+[data-md-color-scheme="newuu-dark"] .md-typeset .md-button--primary:hover {
+  background-color: var(--nu-note);                    /* #5FD094 — lifts   */
+  border-color: var(--nu-note);
+  color: #060C19;
+}
+
+/* --- 12.11 The brand rule is a mark, not a button -------------------------
+   Review feedback: too much air between the rule and the title, the rule was a
+   link, and it had to survive every breakpoint.
+
+   Material always wraps `theme.logo` in an anchor to the home page, and lays it
+   out as a button: `padding: 0 8px` plus `margin: 4px`, with the title carrying
+   a further `margin-left: 20px`. Measured gap between the 3px rule and the first
+   glyph: 32px.
+
+   Rasterising the official lockup gives the real relationship — the rule is 4.0
+   viewBox units wide and the wordmark starts 15.4 units after it, so the gap is
+   3.76x the rule's width. At 3px that is ~11px, not 32.
+
+   So `theme.logo` is dropped and the rule is drawn as a ::before on the title:
+   decoration rather than a link, and present wherever the title is, which
+   includes mobile.
+   ------------------------------------------------------------------------- */
+.md-header__button.md-logo { display: none; }
+
+.md-header__title {
+  margin-left: .4rem;
+}
+.md-header__title::before {
+  content: "";
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 3px;
+  height: 1.1rem;
+  margin-right: .55rem;          /* 11px = 3.76 x the 3px rule, per the lockup */
+  border-radius: 1px;
+  background: linear-gradient(180deg,
+    var(--nu-mark-1) 0 38%, var(--nu-mark-2) 38% 64%, var(--nu-mark-3) 64%);
+}
+/* The title is a flex row; keep the rule vertically centred against the text
+   rather than sitting on the baseline. */
+.md-header__title { display: flex; align-items: center; }
+.md-header__title .md-header__ellipsis { min-width: 0; }
+
+/* Material hides the title while the search field is open — the rule goes with
+   it, which is correct: the header is showing a different thing. */
+
+/* --- 12.12 Mobile drawer: flat, not layered ------------------------------
+   Review feedback: the drawer behaved like stock Material — tap a section, a
+   sub-panel slides in over the top, tap a back arrow to return.
+
+   `navigation.sections` alone does NOT fix this. It flattens the DESKTOP
+   sidebar only; below Material's 76.1875em breakpoint the primary nav is still
+   built as absolutely-positioned panels translated in and out, each with its
+   own back-button header. Verified in the DOM: five `.md-nav__title[for]` back
+   buttons on a three-item nav.
+
+   The panels are therefore un-positioned so every level renders inline, and the
+   per-section back headers are removed. One scrollable list, no hidden state,
+   no navigating the navigation.
+   ------------------------------------------------------------------------- */
+@media screen and (max-width: 76.1875em) {
+
+  /* 1. Sub-navigations render in flow instead of as sliding overlays. */
+  .md-nav--primary .md-nav {
+    position: static;
+    transform: none;
+    opacity: 1;
+    height: auto;
+    display: block;
+    z-index: auto;
+    background: transparent;
+  }
+
+  /* 2. Drop the back-button header each sub-level carries. The drawer keeps its
+        own top-level title (the site name), which is a different element.     */
+  .md-nav--primary .md-nav .md-nav__title { display: none; }
+
+  /* 3. A section label is a heading, not a control. Material still emits it as
+        a <label> tied to a checkbox; strip the affordance so nothing invites a
+        tap that now does nothing.                                             */
+  .md-nav--primary .md-nav__item--section > .md-nav__link,
+  .md-nav--primary .md-nav__item--nested > .md-nav__link {
+    pointer-events: none;
+    cursor: default;
+    margin-top: 1.1rem;
+    padding-left: .6rem;
+    color: var(--md-default-fg-color--light);
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+  /* the chevron that used to mean "opens a panel" */
+  .md-nav--primary .md-nav__item--section > .md-nav__link .md-nav__icon,
+  .md-nav--primary .md-nav__item--nested > .md-nav__link .md-nav__icon {
+    display: none;
+  }
+  /* a child page inside a section is still a real link */
+  .md-nav--primary .md-nav .md-nav__link {
+    pointer-events: auto;
+    cursor: pointer;
+    margin-top: 0;
+    padding-left: .6rem;
+    color: var(--md-default-fg-color);
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .md-nav--primary .md-nav .md-nav__link--active,
+  .md-nav--primary .md-nav__link--active {
+    color: var(--md-accent-fg-color);
+    font-weight: 700;
+  }
+
+  /* 4. The drawer's own header: carry the brand rule, drop the stock bulk. */
+  .md-nav--primary > .md-nav__title {
+    height: auto;
+    padding: 1.1rem .8rem .9rem;
+    line-height: 1.3;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--md-default-fg-color);
+    background: var(--md-default-bg-color--light);
+    box-shadow: none;
+    border-bottom: 1px solid var(--md-typeset-table-color);
+    display: flex;
+    align-items: center;
+  }
+  .md-nav--primary > .md-nav__title::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 3px;
+    height: 1.1rem;
+    margin-right: .55rem;
+    border-radius: 1px;
+    background: linear-gradient(180deg,
+      var(--nu-mark-1) 0 38%, var(--nu-mark-2) 38% 64%, var(--nu-mark-3) 64%);
+  }
+  /* Material puts a back-arrow button and a logo slot in that header; neither
+     means anything once the drawer is flat. */
+  .md-nav--primary > .md-nav__title > .md-nav__button,
+  .md-nav--primary > .md-nav__title > .md-nav__icon { display: none; }
+
+  .md-nav--primary .md-nav__list { padding-bottom: 1.2rem; }
+}
+
+/* --- 12.13 Drawer: clear the fixed header, drop dead affordances ----------
+   Two consequences of flattening, found by measuring the open drawer:
+
+   1. Material's drawer title is normally 5.6rem tall, which is what kept it
+      clear of the 48px fixed header. Shrinking it put it at top:0, underneath
+      the header. It is redundant anyway — the header directly above already
+      shows the site name and the brand rule — so it goes, and the nav gets the
+      header's height as padding instead.
+
+   2. The active page keeps a chevron that used to open its table of contents
+      as a sub-panel. Flat, the contents are already inline, so the control
+      points at nothing.
+   ------------------------------------------------------------------------- */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary > .md-nav__title { display: none; }
+
+  /* The drawer is fixed at top:0 with a higher z-index than the header, so with
+     the tall title gone it covered the header's left half — including the brand
+     rule. Start it below the header instead: the header stays whole, and the
+     drawer reads as opening underneath it rather than over it. */
+  .md-sidebar--primary {
+    top: 2.4rem;                                   /* = header height */
+    height: calc(100% - 2.4rem);
+  }
+
+  .md-nav--primary .md-nav__link .md-nav__icon,
+  .md-nav--primary .md-nav__link--active .md-nav__icon { display: none; }
+
+  /* The active page's table of contents is inlined under it. Set it back a
+     step so site navigation and page contents stay distinguishable. */
+  .md-nav--primary .md-nav__link--active + .md-nav .md-nav__link {
+    padding-left: 1.3rem;
+    font-size: .68rem;
+    color: var(--md-default-fg-color--light);
+  }
+}
+
+/* --- 12.14 Mobile search: same field as desktop --------------------------
+   Review feedback: mobile search looked nothing like the desktop control.
+
+   Desktop renders a tinted rounded field sitting on the navy header. Below
+   Material's breakpoint the same markup becomes a full-bleed WHITE strip with
+   dark text — a different component to look at, for the same job.
+
+   Specificity matters here. Material sets the open state with
+
+       [data-md-toggle="search"]:checked ~ .md-header .md-search__form
+
+   which outranks a plain `.md-search__form`. Overriding at the lower
+   specificity left the bar white while the input override DID land, producing
+   white text on white — worse than the stock control. Every rule below is
+   written at Material's own specificity.
+
+   Material's search BEHAVIOUR (full-screen overlay, focus handling, result
+   rendering) comes from its bundled JavaScript and is not ours to restructure.
+   Its appearance is, so the mobile field is dressed as the desktop one.
+   ------------------------------------------------------------------------- */
+@media screen and (max-width: 76.1875em) {
+  /* Padding on the form does NOT inset the field. Measured: whatever horizontal
+     padding the form gets, its own border box shifts left by exactly that much,
+     so the field lands flush against the viewport edge and the gap piles up on
+     the right (0px / 20px at .5rem). Leave the form unpadded — at zero padding
+     it sits true — and inset the field itself instead. */
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+    width: 100%;
+    height: auto;
+    padding: .3rem 0;
+    background: var(--md-primary-fg-color);
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__input {
+    width: calc(100% - 1rem);
+    margin: 0 .5rem;
+    height: 1.9rem;
+    padding-left: 2.3rem;
+    padding-right: 2.3rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, .14);
+    color: var(--md-primary-bg-color);
+    font-size: .75rem;
+  }
+
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__input:focus {
+    background: rgba(255, 255, 255, .22);
+  }
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__input::placeholder {
+    color: var(--md-primary-bg-color--light);
+  }
+
+  /* Back arrow and clear button ride on the navy bar, so they take header ink
+     and centre against the field rather than the old 48px strip. */
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__icon,
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__options .md-icon {
+    color: var(--md-primary-bg-color);
+    top: 50%;
+    margin-top: 0;
+    transform: translateY(-50%);
+  }
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__icon { left: 1.25rem; }
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__options { right: 1.25rem; }
+
+  /* Results sit on the page ground, not on a floating sheet. */
+  .md-search__output {
+    background: var(--md-default-bg-color);
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .md-search-result__meta {
+    background: var(--md-default-bg-color--light);
+    color: var(--md-default-fg-color--light);
+    font-size: .6rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+}
+
+/* --- 12.15 The mark's colours are brand constants ------------------------
+   Review feedback: the rule vanished from the header in dark mode.
+
+   `--nu-mark-1/2/3` were declared only inside `[data-md-color-scheme="newuu"]`.
+   Under the dark scheme they resolved to nothing, which made every colour stop
+   in the gradient invalid — and an invalid stop drops the whole `background`
+   declaration, so the rule rendered as nothing at all. It survived earlier only
+   because the mark used to be an <img> with the colours baked into the SVG.
+
+   This is the third time the same shape of bug has appeared (see §11.2 and
+   §12.3): a value defined in one scheme and silently missing in the other.
+   These three are not semantic tokens that should differ by scheme — they are
+   the logo's own colours, and the official lockup keeps them identical on light
+   and dark grounds. They belong in :root, where no scheme can lose them.
+   ------------------------------------------------------------------------- */
+:root {
+  --nu-mark-1: #147E5C;   /* logo mark, top segment    */
+  --nu-mark-2: #41B078;   /* logo mark, middle segment */
+  --nu-mark-3: #2DAB5E;   /* logo mark, bottom segment */
+}

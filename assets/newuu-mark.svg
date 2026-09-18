@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 40" role="img" aria-label="New Uzbekistan University">
+  <!-- The NewUU mark is the vertical tri-tone rule of the official lockup.
+
+       The official bar is 2 units wide against 80 tall — 1:40. Reproduced
+       faithfully it renders 0.75px wide at header height and disappears, so the
+       mark is REDRAWN at 1:10: visible at ~3px, and still reading as a rule
+       rather than as a block. The corner radius is kept well under a pill so
+       the ends stay crisp, matching how the original reads at its own size.
+
+       Segment breaks keep the original 38% / 64% split. -->
+  <clipPath id="bar"><rect x="0" y="0" width="4" height="40" rx="1.2"/></clipPath>
+  <g clip-path="url(#bar)">
+    <rect x="0" y="0"    width="4" height="15.2" fill="#147E5C"/>
+    <rect x="0" y="15.2" width="4" height="10.4" fill="#41B078"/>
+    <rect x="0" y="25.6" width="4" height="14.4" fill="#2DAB5E"/>
+  </g>
+</svg>

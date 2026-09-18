@@ -1,0 +1,68 @@
+/* Course-specific components on top of the NewUU theme.
+   Do not put brand colours or chrome overrides here — those live in newuu.css. */
+
+.md-typeset .lead {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Stack diagram on the technology page */
+.md-typeset .stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin: 1.6em 0;
+}
+
+.md-typeset .stack__layer,
+.md-typeset .stack__target {
+  position: relative;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 3px solid var(--md-accent-fg-color);
+  border-radius: 0.2rem;
+  background-color: var(--md-code-bg-color);
+}
+
+.md-typeset .stack__layer:not(:last-child)::after,
+.md-typeset .stack > .stack__layer--bus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1.05rem;
+  width: 1px;
+  height: 0.75rem;
+  background-color: var(--md-default-fg-color--lighter);
+}
+
+.md-typeset .stack__layer--bus {
+  border-left-color: var(--md-accent-fg-color);
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+.md-typeset .stack__targets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+}
+
+.md-typeset .stack__target {
+  border-left-color: var(--md-default-fg-color--lighter);
+}
+
+.md-typeset .stack__title {
+  margin: 0 0 0.15rem;
+  font-size: 0.78rem;
+}
+
+.md-typeset .stack p {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .stack p.stack__title {
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color);
+}
