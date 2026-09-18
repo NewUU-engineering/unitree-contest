@@ -51,7 +51,7 @@ stage 1
 </div>
 
 <div class="stack__target" markdown>
-**Unitree Go2 · G1**
+**Unitree Go2 EDU · G1**
 { .stack__title }
 
 stages 2–3

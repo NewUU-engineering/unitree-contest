@@ -13,58 +13,64 @@ edit_uri: edit/main/docs/
 exclude_docs: |
   README.md
 
-copyright: New Uzbekistan University · Инженерная школа
+copyright: New Uzbekistan University · School of Engineering
 
 theme:
   name: material
+  custom_dir: overrides
   language: ru
+  # No `logo:` — the brand mark is drawn as ::before on the header title
+  # (newuu.css). assets/newuu-mark.svg is kept for social cards / favicon use.
   favicon: assets/favicon.svg
-  logo: assets/logo.svg
+  font:
+    text: IBM Plex Sans
+    code: JetBrains Mono
   icon:
     repo: fontawesome/brands/github
-  font:
-    text: Inter
-    code: JetBrains Mono
   palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Переключить тему
     - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: custom
-      accent: custom
+      scheme: newuu
       toggle:
-        icon: material/weather-night
-        name: Тёмная тема
+        icon: material/brightness-7
+        name: Переключить тему
     - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: custom
-      accent: custom
+      scheme: newuu-dark
       toggle:
-        icon: material/weather-sunny
-        name: Светлая тема
+        icon: material/brightness-4
+        name: Переключить тему
   features:
-    - navigation.tabs
     - navigation.sections
-    - navigation.top
     - navigation.tracking
+    - navigation.top
+    - navigation.footer
     - navigation.indexes
+    - navigation.path
     - toc.follow
-    - search.suggest
-    - search.highlight
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
+    - content.action.edit
     - content.tooltips
+    - search.suggest
+    - search.highlight
+    # navigation.instant is OFF: it breaks the i18n language switcher
 
 extra_css:
-  - stylesheets/extra.css
+  - stylesheets/newuu.css
+  - stylesheets/course.css
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/NewUU-engineering
-      name: NewUU Engineering на GitHub
+      name: NewUU Engineering on GitHub
     - icon: fontawesome/solid/envelope
       link: mailto:robotics@newuu.uz
-      name: Написать организаторам
+      name: Contact the organisers
 
 nav:
   - Главная: index.md
@@ -96,6 +102,7 @@ markdown_extensions:
   - toc:
       permalink: true
       permalink_title: Ссылка на раздел
+      toc_depth: 3
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
   - pymdownx.betterem
   - pymdownx.caret
@@ -105,7 +112,21 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.keys
+  - pymdownx.keys:
+      key_map:
+        l1: "L1"
+        l2: "L2"
+        r1: "R1"
+        r2: "R2"
+        start: "START"
+        select: "SELECT"
+        home: "HOME"
+        dpad-up: "D-pad ↑"
+        dpad-down: "D-pad ↓"
+        dpad-left: "D-pad ←"
+        dpad-right: "D-pad →"
+        stick-left: "Left stick"
+        stick-right: "Right stick"
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences
@@ -126,6 +147,8 @@ plugins:
   - i18n:
       docs_structure: folder
       fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
       languages:
         - locale: ru
           default: true
@@ -150,13 +173,16 @@ plugins:
           theme:
             language: en
             palette:
+              - media: "(prefers-color-scheme)"
+                toggle:
+                  name: Switch theme
               - media: "(prefers-color-scheme: light)"
                 toggle:
-                  name: Switch to dark mode
+                  name: Switch theme
               - media: "(prefers-color-scheme: dark)"
                 toggle:
-                  name: Switch to light mode
-          copyright: New Uzbekistan University · Engineering School
+                  name: Switch theme
+          copyright: New Uzbekistan University · School of Engineering
           nav_translations:
             Главная: Home
             Соревнование: Competition
@@ -174,3 +200,10 @@ plugins:
             Обучающие материалы: Learning resources
             Обучение моделей: Model training
             FAQ: FAQ
+
+validation:
+  omitted_files: warn
+  # Language-switcher buttons use / and /en/ on purpose
+  absolute_links: ignore
+  unrecognized_links: warn
+  anchors: warn

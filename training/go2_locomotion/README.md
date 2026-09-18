@@ -19,11 +19,11 @@ the exported policy inside Starter Kit; they do not train locomotion themselves.
 3. **Actions** — target joint positions or torques per Unitree low-level API.
 4. **Reward** — track commanded vx/vy/vyaw, penalize energy, falls, and foot slip.
 5. **Sim-to-real** — domain randomization on mass, friction, sensor delay; fine-tune
-   on real Go2 only if platform is **Go2 EDU** with low-level access.
+   on the lab **Go2 EDU** (low-level `LowCmd` access).
 
-> **Go2 EDU vs Pro/Air:** low-level `LowCmd` policies apply only to **EDU**. On
-> Pro/Air use Sport API (`Move`) — AgroKit `go2.nav` already falls back to
-> SportClient when available.
+> **Platform:** организаторы используют **Go2 EDU**. Политика `cmd_vel` → `LowCmd`
+> переносится из симулятора на робота через DDS. AgroKit `go2.nav` может
+> fallback на Sport API (`Move`) только если low-level недоступен — не наш случай.
 
 ## Export for AgroKit
 
@@ -45,8 +45,7 @@ python training/go2_locomotion/export_policy.py \
     --out models/go2_locomotion
 ```
 
-Integration into `agrokit.go2.nav` will load this bundle in a future AgroKit
-release once the EDU/Pro decision is finalized.
+Integration into `agrokit.go2.nav` loads this bundle for **Go2 EDU**.
 
 ## References
 

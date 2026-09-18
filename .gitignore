@@ -27,6 +27,9 @@ models/go2_locomotion/
 !models/.gitkeep
 .venv-train/
 
+# Node
+node_modules/
+
 # ОС и редакторы
 .DS_Store
 .idea/

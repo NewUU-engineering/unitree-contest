@@ -105,7 +105,7 @@ python training/go2_locomotion/export_policy.py \
     --out models/go2_locomotion
 ```
 
-Интеграция в AgroKit — после финализации комплектации Go2 (EDU vs Pro/Air).
+Интеграция в AgroKit — политика `LowCmd` для **Go2 EDU** (подтверждённая комплектация).
 
 ---
 

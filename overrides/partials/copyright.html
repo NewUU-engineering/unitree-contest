@@ -1,0 +1,24 @@
+{#-
+  Overrides Material's copyright partial to carry the full New Uzbekistan
+  University lockup. The three-line wordmark is illegible at header height, so
+  the header uses the mark alone and the complete logo lives here, where there
+  is room for it. Both footer grounds are dark, so the white-wordmark file
+  (logo-light.svg) is correct in both schemes.
+-#}
+<div class="md-copyright">
+  <a class="nu-footer-logo" href="https://newuu.uz" target="_blank" rel="noopener"
+     aria-label="New Uzbekistan University">
+    <img src="{{ 'assets/newuu-logo-light.svg' | url }}" alt="New Uzbekistan University">
+  </a>
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">
+      {{ config.copyright }}
+    </div>
+  {% endif %}
+  {% if not config.extra.generator == false %}
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  {% endif %}
+</div>

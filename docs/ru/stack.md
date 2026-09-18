@@ -51,7 +51,7 @@ Nav2 · tf2 · rosbag · `unitree_sdk2_python`
 </div>
 
 <div class="stack__target" markdown>
-**Unitree Go2 · G1**
+**Unitree Go2 EDU · G1**
 { .stack__title }
 
 этапы 2–3
