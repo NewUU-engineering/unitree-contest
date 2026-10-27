@@ -1,7 +1,6 @@
 name: Gemini review
 
 on:
-  workflow_dispatch:
   pull_request_target:
     types: [opened, synchronize, reopened]
 
@@ -28,7 +27,6 @@ jobs:
 
       - name: Prepare diff
         env:
-          EVENT_NAME: ${{ github.event_name }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REPOSITORY: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
@@ -36,15 +34,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ "$EVENT_NAME" = "pull_request_target" ]; then
-            curl --fail-with-body -L \
-              -H "Authorization: Bearer $GH_TOKEN" \
-              -H "Accept: application/vnd.github.v3.diff" \
-              "https://api.github.com/repos/$REPOSITORY/pulls/$PR_NUMBER" \
-              -o review.diff
-          else
-            git diff HEAD^ HEAD > review.diff
-          fi
+          curl --fail-with-body -L \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github.v3.diff" \
+            "https://api.github.com/repos/$REPOSITORY/pulls/$PR_NUMBER" \
+            -o review.diff
 
           wc -c review.diff
 
