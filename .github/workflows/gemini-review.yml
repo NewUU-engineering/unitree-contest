@@ -33,7 +33,7 @@ jobs:
           if [ "$EVENT_NAME" = "pull_request" ]; then
             git diff "$BASE_SHA" "$HEAD_SHA" > review.diff
           else
-            : > review.diff
+            git diff HEAD^ HEAD > review.diff
           fi
           wc -c review.diff
 
