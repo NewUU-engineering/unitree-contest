@@ -1,0 +1,56 @@
+name: Gemini review
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Prepare diff
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            git diff "$BASE_SHA" "$HEAD_SHA" > review.diff
+          else
+            : > review.diff
+          fi
+          wc -c review.diff
+
+      - name: Run Gemini reviewer
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python .github/reviewer/gemini_reviewer.py . \
+            --diff review.diff \
+            --output review_report.json \
+            --model gemini-3.5-flash-lite
+
+      - name: Upload review report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-review-${{ github.run_number }}
+          path: review_report.json
+          if-no-files-found: warn
+          retention-days: 7
